@@ -15,7 +15,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 					let data = await response.json();
 					let obj = {};
-					obj[element] = data[element == "films" ? "result" : "results"].map(item => ({ ...item, img: `https://starwars-visualguide.com/#/${element == 'people' ? characters : element}characters/${item.uid}.jpg` }));
+					obj[element] = data[element == "films" ? "result" : "results"].map(item => ({ ...item, img: `https://starwars-visualguide.com/assets/img/${element == 'people' ? "characters" : element}/${item.uid}.jpg` }));
 					setStore(obj)
 				}
 				catch (error) {

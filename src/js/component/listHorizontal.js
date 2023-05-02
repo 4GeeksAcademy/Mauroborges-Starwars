@@ -13,7 +13,7 @@ import { Context } from "../store/appContext";
     return (<div className="overflow-auto d-flex w-100">
         {store[element]?.map(item=>
             <div key = {item.uid} className="card" style={{minWidth: "200px"}}>
-            <img src="item.img" className="card-img-top" alt="..."/>
+            <img src={item.img} className="card-img-top" alt="..."/>
             <div className="card-body">
               <h5 className="card-title">{item.name}</h5>
               <button href="#" className="btn btn-outline-warning" 
