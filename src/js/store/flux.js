@@ -1,4 +1,5 @@
 import { element } from "prop-types";
+import PlanetsDetail from "../views/PlanetsDetail";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -23,6 +24,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				}
 			},
+			
 			markFavorite: async (elementId, name) => {
 				
 				let {favorite} = getStore()
