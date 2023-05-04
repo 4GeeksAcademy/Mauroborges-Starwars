@@ -4,7 +4,8 @@ import PlanetsDetail from "../views/PlanetsDetail";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			favorite: []
+			favorite: [],
+			planet:{},
 		},
 		actions: {
 			fetchStarWars: async (element, page = 1, limit = 10) => {
@@ -22,6 +23,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				catch (error) {
 					console.error(error)
 
+				}
+			},
+			fetchPlanetsDetail: async (uid)=>{
+				let baseUrl=`https://www.swapi.tech/api/planets/${uid}`
+				try{
+					let response = await fetch(baseUrl)
+					if (!response.ok) return response.status
+					let data = await response.json()
+					//console.log(data.result)
+					setStore({planet:data.result})
+				}
+
+				catch(error){
+					console.error(error)
 				}
 			},
 			
