@@ -21,7 +21,7 @@ const ListHorizontal = ({ element }) => {
             onClick={() => actions.markFavorite(`${element}/${item.uid}`, item.name)}>
             <i className={`bi bi-heart${checkFavorite(item.uid) ? "-fill" : ""}`}></i>
           </button>
-          <Link to={`${element}/${item.uid}`}>
+          <Link to={`/${element}/${item.uid}`}>
           <button className="btn btn-primary">More info</button>
           </Link>
         </div>

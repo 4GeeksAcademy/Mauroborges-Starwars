@@ -4,8 +4,11 @@ import PlanetsDetail from "../views/PlanetsDetail";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			people:[],
 			favorite: [],
-			planet:{},
+			planet:[],
+			vehicles:[],
+			films:[],
 		},
 		actions: {
 			fetchStarWars: async (element, page = 1, limit = 10) => {
@@ -33,6 +36,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 					let data = await response.json()
 					//console.log(data.result)
 					setStore({planet:data.result})
+				}
+
+				catch(error){
+					console.error(error)
+				}
+			},
+			fetchPeopleDetail: async (uid)=>{
+				let baseUrl=`https://www.swapi.tech/api/people/${uid}`
+				try{
+					let response = await fetch(baseUrl)
+					if (!response.ok) return response.status
+					let data = await response.json()
+					//console.log(data.result)
+					setStore({people:data.result})
 				}
 
 				catch(error){
