@@ -56,6 +56,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error(error)
 				}
 			},
+
+			fetchVehicles: async (uid)=>{
+				let baseUrl=`https://www.swapi.tech/api/vehicles/${uid}`
+				try{
+					let response = await fetch(baseUrl)
+					if (!response.ok) return response.status
+					let data = await response.json()
+					//console.log(data.result)
+					setStore({vehicles:data.result})
+				}
+
+				catch(error){
+					console.error(error)
+				}
+			},
 			
 			markFavorite: async (elementId, name) => {
 				
