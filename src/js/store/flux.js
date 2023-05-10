@@ -73,17 +73,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			
 			markFavorite: async (elementId, name) => {
-				
+				console.log(elementId)
 				let {favorite} = getStore()
 				//Verificando si el favorito ya existe
 				if (!favorite.some(item => item.id == elementId)) {
 					//En caso de que NO exista, se agrega
-					setStore({ favorite: [...favorite, { id: elementId, name }] })
+					// setStore({ favorite: [...favorite, { id: elementId, name }] })
+					setStore({ favorite: [...favorite, name] })
 				} else {
 					//En caso de que SI exista, se elimina
-					let newFavorite = [...favorite]
-					let index = favorite.findIndex(item => item.id == elementId)
-					newFavorite.splice(index, 1)
+					// let newFavorite = [...favorite]
+					let newFavorite= [];
+					// let index = favorite.findIndex(item => item.id == elementId)
+					// newFavorite.splice(index, 1)
+					newFavorite=favorite.favorite.filter(item => item.name !== name)
+					
 					setStore({ favorite: newFavorite })
 				}
 			}
