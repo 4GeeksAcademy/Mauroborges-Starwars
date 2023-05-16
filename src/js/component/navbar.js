@@ -22,6 +22,20 @@ export const Navbar = ({element}) => {
 				</Link>
 			</div> */}
 			<div className="nav-item dropdown">
+                    <a className="nav-link dropdown-toggle"
+                    href="#" role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false" >
+                    Favoritos</a>
+                    <ul className="dropdown-menu" >
+                        {store.favorite.map((item, id) => (
+                        <li key={id}>
+                            <a className="dropdown-item" >
+                            {item.name} <i className="fa fa-trash float-end"></i></a>
+                        </li>))}
+                    </ul>
+            </div>
+			{/* <div className="nav-item dropdown">
                     <a className="nav-link dropdown-toggle" 
                     href="#" role="button" 
                     data-bs-toggle="dropdown" 
@@ -34,7 +48,7 @@ export const Navbar = ({element}) => {
                             {item} <i className="fa fa-trash float-end"></i></a>
                         </li>))}
                     </ul> 
-                    </div>  
+                    </div>   */}
 		</nav>
 	);
 };

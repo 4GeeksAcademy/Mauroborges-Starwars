@@ -71,26 +71,43 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error(error)
 				}
 			},
+			markFavorite: async (elementId, name, item) => {
+				const store = getStore();
+                if (store.favorite.includes(item)) {
+                    // Si esta incluido, que lo borre
+					let newFavorite = []
+					newFavorite = store.favorite.filter((elem) => elem !== item)
+					setStore({
+                        favorite: newFavorite
+                    })
+                } else {
+                    setStore({
+                        favorite: [...store.favorite, item]
+                    })
+                }
+
+			},
+
 			
-			markFavorite: async (elementId, name) => {
-				console.log(elementId)
-				let {favorite} = getStore()
-				//Verificando si el favorito ya existe
-				if (!favorite.some(item => item.id == elementId)) {
-					//En caso de que NO exista, se agrega
-					// setStore({ favorite: [...favorite, { id: elementId, name }] })
-					setStore({ favorite: [...favorite, name] })
-				} else {
-					//En caso de que SI exista, se elimina
-					// let newFavorite = [...favorite]
-					let newFavorite= [];
-					// let index = favorite.findIndex(item => item.id == elementId)
-					// newFavorite.splice(index, 1)
-					newFavorite=favorite.favorite.filter(item => item.name !== name)
+			// markFavorite: async (elementId, name) => {
+			// 	console.log(elementId)
+			// 	let {favorite} = getStore()
+			// 	//Verificando si el favorito ya existe
+			// 	if (!favorite.some(item => item.id == elementId)) {
+			// 		//En caso de que NO exista, se agrega
+			// 		// setStore({ favorite: [...favorite, { id: elementId, name }] })
+			// 		setStore({ favorite: [...favorite, name] })
+			// 	} else {
+			// 		//En caso de que SI exista, se elimina
+			// 		// let newFavorite = [...favorite]
+			// 		let newFavorite= [];
+			// 		// let index = favorite.findIndex(item => item.id == elementId)
+			// 		// newFavorite.splice(index, 1)
+			// 		newFavorite=favorite.favorite.filter(item => item.name !== name)
 					
-					setStore({ favorite: newFavorite })
-				}
-			}
+			// 		setStore({ favorite: newFavorite })
+			// 	}
+			// }
 
 
 		}

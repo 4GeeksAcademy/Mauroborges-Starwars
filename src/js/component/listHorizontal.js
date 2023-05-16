@@ -18,9 +18,13 @@ const ListHorizontal = ({ element }) => {
         <div className="card-body">
           <h5 className="card-title">{item.name}</h5>
           <button href="#" className="btn btn-outline-warning"
-            onClick={() => actions.markFavorite(`${element}/${item.uid}`, item.name)}>
+            onClick={() => actions.markFavorite(`${element}/${item.uid}`, item.name, item)}>
             <i className={`bi bi-heart${checkFavorite(item.uid) ? "-fill" : ""}`}></i>
           </button>
+          {/* <button href="#" className="btn btn-outline-warning"
+            onClick={() => actions.markFavorite(`${element}/${item.uid}`, item.name)}> */}
+            {/* <i className={`bi bi-heart${checkFavorite(item.uid) ? "-fill" : ""}`}></i>
+          </button> */}
           <Link to={`/${element}/${item.uid}`}>
           <button className="btn btn-primary">More info</button>
           </Link>
